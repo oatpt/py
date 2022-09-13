@@ -12,13 +12,16 @@ class LinkedList:
         self.size=0
     
     def __str__(self) :
-        self.str=""
+        
+        self.str="link list : "
         self.now=self.head
         for i in range(self.size):
             self.str+=str(self.now.data)
             if i != self.size-1:
                 self.str+="->"
             self.now=self.now.next
+        if self.size==0 :
+            return 'List is empty'
         return self.str
 
     def isEmpty(self) :
@@ -62,6 +65,7 @@ for i in inp[0].split():
     List.append(i)
 print(List)
 for i in range(1,len(inp)):
-    List.insert(int(inp[i][1]),int(inp[i][3]))
+    temp = inp[i].split(':')
+    List.insert(int(temp[0]),int(temp[1]))
     print(List)
 
