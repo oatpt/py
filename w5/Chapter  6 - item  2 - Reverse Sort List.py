@@ -1,10 +1,13 @@
 def sort(ls,index):
     if index <= 0:
         return
-    if(ls[index]>ls[index-1]):
+    
+    if(ls[index]<ls[index-1]):
         ls[index],ls[index-1]=ls[index-1],ls[index]
     sort(ls,index-1)
-    if(ls[index]>ls[index-1]):
+    
+    
+    if(ls[index]<ls[index-1]):
         ls[index],ls[index-1]=ls[index-1],ls[index]
     sort(ls,index-1)
 

@@ -1,12 +1,7 @@
 def pantip(k, n, arr, path):
-    #print(path,k)
-    #rint(n)
     sum=0
     if k==0:
         print(*path)
-        #for i in path:
-        #    print(i,end=' ')
-        #print()
         return 1
     if n>=len(arr):
         return 0
