@@ -6,7 +6,6 @@ class Node:
     
     def __str__(self):
         return str(self.data)
-
 class BST:
     def __init__(self):
         self.root = None
@@ -29,10 +28,21 @@ class BST:
             self.printTree(node.right, level + 1)
             print('     ' * level, node)
             self.printTree(node.left, level + 1) 
-    
+def rank(node,key):
+    R=0
+    if node != None:
+        R+=rank(node.left,key) 
+        if node.data<=key:
+            R+=1
+        R+=rank(node.right,key)
+        return R
+    return 0
 T = BST()
-inp = [int(i) for i in input('Enter Input : ').split()]
+a,b=input('Enter Input : ').split('/')
+inp = [int(i) for i in a.split()]
 root = T.root 
 for i in inp:
     root = T.insert(i)
 T.printTree(root)
+print("--------------------------------------------------")
+print("Rank of",b,":",rank(root,int(b)))
