@@ -60,7 +60,7 @@ class AVL_Tree(object):
         # Perform rotation
         y.left = z
         z.right = T2
- 
+        
         # Update heights
         z.height = 1 + max(self.getHeight(z.left),
                          self.getHeight(z.right))
