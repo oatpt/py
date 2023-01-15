@@ -19,41 +19,43 @@ done = False
  
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
- 
-# Starting position of the rectangle
-rect_x = 50
-rect_y = 50
- 
-# Speed and direction of rectangle
-rect_change_x = 2
-rect_change_y = 2
- 
+v=0
+x=325
+y=225
 # -------- Main Program Loop -----------
 while not done:
     # --- Event Processing
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
- 
-    # --- Logic
-    # Move the rectangle starting point
-    rect_x += rect_change_x
-    rect_y += rect_change_y
- 
-    # Bounce the ball if needed
-    if rect_y > 450 or rect_y < 0:
-        rect_change_y = rect_change_y * -1
-    if rect_x > 650 or rect_x < 0:
-        rect_change_x = rect_change_x * -1
- 
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                v=-1
+            if event.key == pygame.K_RIGHT:
+                v=1
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT and v == -1:
+                v=0
+            if event.key == pygame.K_RIGHT and v == 1:
+                v=0
+            
+    
+
     # --- Drawing
     # Set the screen background
     screen.fill(BLACK)
+
+    if 0<x+v<650:
+        x+=v
  
     # Draw the rectangle
+    pygame.draw.line(screen,WHITE,[0,0],[700,500],10)
     pygame.draw.circle(screen,GREEN,[350,250],100)
-    pygame.draw.rect(screen, WHITE, [rect_x, rect_y, 50, 50])
-    pygame.draw.rect(screen, RED, [rect_x + 10, rect_y + 10, 30, 30])
+    pygame.draw.rect(screen, WHITE, [x,y, 50, 50])
+    pygame.draw.rect(screen, RED, [x+10,y+10, 30, 30])
+
  
     # --- Wrap-up
     # Limit to 60 frames per second

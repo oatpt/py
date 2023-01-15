@@ -1,5 +1,7 @@
-x =input()
-sum=0
-for i in x:
-    sum+=int (i)
-print(sum)
+try:
+    print("hi")
+    print(int('asd'))
+except ZeroDivisionError:
+    print("ZeroDivisionError")
+except ValueError:
+    print("ValueError")
