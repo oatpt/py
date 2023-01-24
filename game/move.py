@@ -32,17 +32,17 @@ while not done:
             done = True
         if event.type == pygame.MOUSEBUTTONDOWN:
             color=(random.randint(0,255),random.randint(0,255),random.randint(0,255))
-    x,y=pygame.mouse.get_pos()
+    
+    font = pygame.font.Font('freesansbold.ttf', 32)
 
-    #move
-    
-    # --- Drawing
-    # Set the screen background
-    screen.fill(BLACK)
-    print(pygame.mouse.get_pos())
-    # Draw the rectangle
-    
-    pygame.draw.rect(screen, color, [x-15,y-15, 30, 30])
+    text = font.render('GeeksForGeeks', False, GREEN)
+
+    textRect = text.get_rect()
+ 
+    textRect.center = (350, 250)
+
+    screen.blit(text, textRect)
+
  
     # --- Wrap-up
     # Limit to 60 frames per second
